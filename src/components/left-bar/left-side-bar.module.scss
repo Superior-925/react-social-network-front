@@ -1,0 +1,47 @@
+.leftSideBarWrapper {
+  width: 25%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 1rem;
+  align-items: center;
+  border: solid 1px lightgray;
+  border-radius: 5px;
+  box-shadow: 0 3px 3px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+  background-color: white;
+}
+
+.myPageButton {
+  margin-top: 0.7rem;
+  margin-bottom: 0.7rem;
+  width: 90%;
+  &:hover{
+    background-color: #dce1e6;
+  }
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  border: none;
+  border-radius: 5px;
+  background-color: white;
+}
+
+.friendsPageButton {
+  margin-bottom: 0.7rem;
+  width: 90%;
+  &:hover{
+    background-color: #dce1e6;
+  }
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  border: none;
+  border-radius: 5px;
+  background-color: white;
+}
+
+.buttonText {
+  font-weight: bold;
+  font-size: 1rem;
+  margin-left: 0.5rem;
+}

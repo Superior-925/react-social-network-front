@@ -1,0 +1,33 @@
+.headerBarWrapper {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 50px;
+  border: solid 1px lightgray;
+  border-radius: 5px;
+  box-shadow: 0 3px 3px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+  background-color: white;
+}
+
+.userNickname {
+  margin-left: 1rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.titleLogoImg {
+  margin-left: 1rem;
+  max-width: 10%;
+}
+
+.leftsideBlock {
+  display: flex;
+  align-items: center;
+  margin-right: 1rem;
+}
+
+.logoutButton {
+  margin-left: 1rem;
+}
