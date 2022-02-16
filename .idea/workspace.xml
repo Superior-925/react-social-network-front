@@ -2,17 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5f493eff-d992-4cc6-beeb-01a32ebaa475" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logo.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/input/MyInput.jsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/input/MyInput.module.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/left-bar/left-side-bar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/left-bar/left-side-bar.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/left-bar/left-side-bar.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/left-bar/left-side-bar.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/posts/posts.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/posts/create-posts.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/posts/posts.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/posts/create-posts.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/friends/friends.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/friends/friends.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/friends/friends.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/friends/friends.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/home/home.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/home/home.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/main/main.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/main/main.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/main/main.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/main/main.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/auth-service.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/auth-service.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/post-service.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/post-service.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,6 +27,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="SCSS File" />
         <option value="JavaScript File" />
       </list>
     </option>
@@ -48,7 +54,8 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../react-social-network-back" />
+    <property name="list.type.of.created.stylesheet" value="SCSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -61,15 +68,15 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/pages/home" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/components/find-friends" />
       <recent name="$PROJECT_DIR$/src/pages/main" />
       <recent name="$PROJECT_DIR$/src/services" />
       <recent name="$PROJECT_DIR$/src/assets" />
       <recent name="$PROJECT_DIR$/src/components/input" />
-      <recent name="$PROJECT_DIR$/src/router" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/pages/home" />
     </key>
   </component>
   <component name="RunManager" selected="npm.npm start">
@@ -87,7 +94,7 @@
       <method v="2" />
     </configuration>
   </component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -122,10 +129,70 @@
       <workItem from="1642755221352" duration="8511000" />
       <workItem from="1642957082086" duration="2922000" />
       <workItem from="1643013537419" duration="8234000" />
+      <workItem from="1643046468376" duration="2396000" />
+      <workItem from="1643111632039" duration="4277000" />
+      <workItem from="1643186812687" duration="1145000" />
+      <workItem from="1643275508928" duration="5498000" />
+      <workItem from="1643367023773" duration="687000" />
+      <workItem from="1643368003121" duration="3903000" />
+      <workItem from="1643618929084" duration="4722000" />
+      <workItem from="1643627493220" duration="3124000" />
+      <workItem from="1643720444782" duration="6468000" />
+      <workItem from="1643876822403" duration="5063000" />
+      <workItem from="1643889174157" duration="501000" />
+      <workItem from="1643954867906" duration="9956000" />
+      <workItem from="1644266985534" duration="6000" />
+      <workItem from="1644267460696" duration="3652000" />
+      <workItem from="1644342378285" duration="12625000" />
+      <workItem from="1644447277250" duration="1155000" />
+      <workItem from="1644521265089" duration="7812000" />
+      <workItem from="1644595007511" duration="2051000" />
+      <workItem from="1644608348400" duration="4192000" />
+      <workItem from="1644662692479" duration="5240000" />
+      <workItem from="1644693505378" duration="3156000" />
+      <workItem from="1644773355348" duration="858000" />
+      <workItem from="1644788537443" duration="1442000" />
+      <workItem from="1644861781330" duration="10412000" />
+      <workItem from="1644939842618" duration="14864000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="3" />
+    <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="623" y="262" width="424" height="479" key="FileChooserDialogImpl" timestamp="1644992783070">
+      <screen x="0" y="0" width="1680" height="1010" />
+    </state>
+    <state x="623" y="262" width="424" height="479" key="FileChooserDialogImpl/1680.0.1920.1080/0.0.1680.1010@0.0.1680.1010" timestamp="1644992783070" />
+    <state width="1659" height="266" key="GridCell.Tab.0.bottom" timestamp="1644960799970">
+      <screen x="0" y="0" width="1680" height="1010" />
+    </state>
+    <state width="1659" height="266" key="GridCell.Tab.0.bottom/1680.0.1920.1080/0.0.1680.1010@0.0.1680.1010" timestamp="1644960799970" />
+    <state width="1659" height="266" key="GridCell.Tab.0.center" timestamp="1644960799969">
+      <screen x="0" y="0" width="1680" height="1010" />
+    </state>
+    <state width="1659" height="266" key="GridCell.Tab.0.center/1680.0.1920.1080/0.0.1680.1010@0.0.1680.1010" timestamp="1644960799969" />
+    <state width="1659" height="266" key="GridCell.Tab.0.left" timestamp="1644960799969">
+      <screen x="0" y="0" width="1680" height="1010" />
+    </state>
+    <state width="1659" height="266" key="GridCell.Tab.0.left/1680.0.1920.1080/0.0.1680.1010@0.0.1680.1010" timestamp="1644960799969" />
+    <state width="1659" height="266" key="GridCell.Tab.0.right" timestamp="1644960799970">
+      <screen x="0" y="0" width="1680" height="1010" />
+    </state>
+    <state width="1659" height="266" key="GridCell.Tab.0.right/1680.0.1920.1080/0.0.1680.1010@0.0.1680.1010" timestamp="1644960799969" />
   </component>
 </project>

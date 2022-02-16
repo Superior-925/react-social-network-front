@@ -1,16 +1,24 @@
-import React, {useContext, useState} from 'react';
-import classes from "./friends.module.scss"
+import React, {useContext, useState, useEffect} from 'react';
+import classes from './friends.module.scss'
 import Container from '@mui/material/Container';
-import FacebookLogo from "../../assets/facebook-logo.png";
-import TextField from '@mui/material/TextField';
-import Button from '@mui/material/Button';
-import AuthService from "../../services/auth-service";
-import {BrowserRouter, Route, Routes, Navigate} from "react-router-dom";
 
 import HeaderBar from "../../components/header-bar/header-bar"
 import LeftSideBar from "../../components/left-bar/left-side-bar";
+import FindFriends from "../../components/find-friends/find-friends";
 
 function Friends() {
+
+    // useEffect(() => {
+    //     PostService.getPosts(localStorage.getItem('userId')).then((response) => {
+    //         response.data.forEach((item) => {
+    //             newPostsArr.push({postText: item.postText, postId: item._id})
+    //         });
+    //         setPosts([...newPostsArr]);
+    //         console.log(posts);
+    //         // setPosts(previousState => ([...previousState, ...newPostsArr]
+    //         // ));
+    //     });
+    // }, []);
 
     return (
         <div>
@@ -22,10 +30,13 @@ function Friends() {
                 }}
             >
                 <HeaderBar/>
-                <LeftSideBar/>
-                <div className="asd">
-                    Friends page works!
+                <div className={classes.contentWrapper}>
+                    <LeftSideBar/>
+                    <div className={classes.mainContent}>
+                        <FindFriends/>
+                    </div>
                 </div>
+
             </Container>
         </div>
     );

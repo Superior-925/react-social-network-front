@@ -79,7 +79,9 @@ function Home() {
 
     const signUp = (data) => {
         setEmailAlreadyExist(false);
+        console.log(data);
         AuthService.signUp(data).then((response) => {
+            console.log(response);
             if (response.status === 200 ) {
                 AuthService.setLocalStorageData(response.data.userId, response.data.userNickname, response.data.token, response.data.refresh.token);
                 navigate(`/main/user/id/${response.data.userId}`);

@@ -1,16 +1,11 @@
 import React, {useState} from 'react';
 import classes from './left-side-bar.module.scss';
 import {useNavigate} from "react-router-dom";
-import AuthService from "../../services/auth-service";
-import FacebookLogo from "../../assets/facebook-logo.png";
-import LogoutIcon from "@mui/icons-material/Logout";
 import GroupIcon from '@mui/icons-material/Group';
 import PersonIcon from '@mui/icons-material/Person';
-
+import Avatar from "../avatar-block/avatar";
 
 const LeftSideBar = (props) => {
-
-    // const [nickname, setCount] = useState(100);
 
     const navigate = useNavigate();
 
@@ -24,6 +19,7 @@ const LeftSideBar = (props) => {
 
     return (
         <div className={classes.leftSideBarWrapper}>
+            <Avatar/>
             <button type={"button"} className={classes.myPageButton} onClick={goToMyPage}>
                 <PersonIcon fontSize="large" color="primary"/> <span className={classes.buttonText}>My page</span>
             </button>

@@ -1,0 +1,52 @@
+.avatarBlock {
+  margin: 0.3rem auto;
+  width: 95%;
+  height: 200px;
+  border: solid 1px lightslategray;
+  background-image: url("../../assets/avatar.png");
+  background-size: cover;
+}
+
+.editAvatarBtn {
+  float: right;
+  margin-top: 0.3rem;
+  margin-right: 0.3rem;
+  border: solid 0.7px lightslategray;
+  border-radius: 5px;
+  background: none;
+  &:hover {
+    background-color: darkgrey;
+  }
+}
+
+.dialogContentBlock {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.avatarPreview {
+  margin-left: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.avatarPreviewTitle {
+  margin: 0 auto 0.5rem auto;
+  font-weight: bold;
+  font-size: 1.3rem;
+}
+
+.setAvatar{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.setAvatarButton {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}

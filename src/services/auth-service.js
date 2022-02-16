@@ -19,6 +19,12 @@ class AuthService {
         return response;
     }
 
+    async refresh(data) {
+        const response = await axios.post(`http://${configDev.hostPort}/login`, {data
+        });
+        return response;
+    }
+
     async logOut() {
         const response = await axios.post(`http://${configDev.hostPort}/logout`, null, this.headers);
         return response;

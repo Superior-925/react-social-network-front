@@ -1,0 +1,30 @@
+.postAreaBlock {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 85%;
+  margin-bottom: 1rem;
+}
+
+.postArea {
+  border: lightgrey solid 1px;
+  margin: 0 auto 1rem auto;
+  padding: 5px 5px;
+  border-radius: 5px;
+  width: 100%;
+  resize: none;
+  &:focus {
+    background-color: #dce1e6;
+  }
+}
+
+.buttonsBlock {
+  margin-right: -12px;
+  display: flex;
+  justify-content: end;
+}
+
+.commentsBlock {
+
+}
+
