@@ -3,9 +3,7 @@ import {configDev} from "../environment/environment.dev"
 
 class AuthService {
 
-    headers = {
-        headers: {"Authorization" : `${localStorage.getItem("token")}`}
-    };
+    timerToken;
 
     async signUp(data) {
         const response = await axios.post(`http://${configDev.hostPort}/signup`, {data
@@ -19,14 +17,18 @@ class AuthService {
         return response;
     }
 
-    async refresh(data) {
-        const response = await axios.post(`http://${configDev.hostPort}/login`, {data
-        });
+    async refresh(token) {
+        const data = {refreshToken: token}
+
+        const response = await axios.post(`http://${configDev.hostPort}/refresh`, data
+        );
         return response;
     }
 
     async logOut() {
-        const response = await axios.post(`http://${configDev.hostPort}/logout`, null, this.headers);
+        const response = await axios.post(`http://${configDev.hostPort}/logout`, null, {
+            headers: {"Authorization" : `${localStorage.getItem("token")}`}
+        });
         return response;
     }
 
@@ -36,6 +38,24 @@ class AuthService {
         localStorage.setItem("token", token);
         localStorage.setItem("refresh", refresh);
     }
+
+    setLocalStorageTokens(token, refresh) {
+        localStorage.setItem("token", token);
+        localStorage.setItem("refresh", refresh);
+    }
+
+    startRefresh() {
+        this.timerToken = setInterval(() => {
+            this.refresh(localStorage.getItem('refresh')).then((response) => {
+                this.setLocalStorageTokens(response.data.token, response.data.refresh.token);
+            })
+        }, 100000);
+    }
+
+    stopRefresh() {
+        clearTimeout(this.timerToken)
+    }
+
 }
 
 export default new AuthService();

@@ -9,7 +9,7 @@ const PostArea = (props) => {
 
     let [showComments, setShowComments] = useState(false);
 
-    let [commentsArray, setCommentsArray] = useState([{posr: 12}]);
+    let [commentsArray, setCommentsArray] = useState([]);
 
     let emptyArr = false;
 
@@ -37,6 +37,17 @@ const PostArea = (props) => {
         setShowComments(!showComments);
     };
 
+    // const tx = document.getElementsByTagName("textarea");
+    // for (let i = 0; i < tx.length; i++) {
+    //     tx[i].setAttribute("style", "height:" + (tx[i].scrollHeight) + "px;overflow-y:hidden;");
+    //     tx[i].addEventListener("input", OnInput, false);
+    // }
+    //
+    // function OnInput() {
+    //     this.style.height = "auto";
+    //     this.style.height = (this.scrollHeight) + "px";
+    // }
+
     return (
         <div className={classes.postAreaBlock}>
             <textarea
@@ -45,13 +56,6 @@ const PostArea = (props) => {
                 className={classes.postArea}
                 onChange={postChangeHandler}>
             </textarea>
-            {emptyArr && showComments && <div>No comments!</div>}
-            {showComments && !emptyArr && <div className={classes.commentsBlock}>
-                Comments:
-
-                {/*{(commentsArray.length>0) && <div className={classes.commentsItems}>Comments block!</div>}*/}
-
-            </div>}
             <div className={classes.buttonsBlock}>
                 <Button
                     sx={{
@@ -92,6 +96,19 @@ const PostArea = (props) => {
                 />Delete post
                 </Button>
             </div>
+            {showComments && <div className={classes.commentsBlock}>
+                <textarea
+                    rows="1"
+                    className={classes.createCommentArea}
+                >
+            </textarea>
+            </div>}
+
+
+            {/*{emptyArr && showComments && <div className={classes.noComments}>No comments!</div>}*/}
+            {/*{showComments && !emptyArr && <div className={classes.commentsBlock}>*/}
+            {/*    Comments:*/}
+            {/*</div>}*/}
         </div>
     );
 };

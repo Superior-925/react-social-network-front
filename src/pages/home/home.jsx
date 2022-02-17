@@ -68,6 +68,7 @@ function Home() {
         AuthService.logIn(data).then((response) => {
             if (response.status === 200 ) {
                 AuthService.setLocalStorageData(response.data.userId, response.data.userNickname, response.data.token, response.data.refresh.token);
+                AuthService.startRefresh();
                 navigate(`/main/user/id/${response.data.userId}`);
             }
         },error => {
@@ -84,6 +85,7 @@ function Home() {
             console.log(response);
             if (response.status === 200 ) {
                 AuthService.setLocalStorageData(response.data.userId, response.data.userNickname, response.data.token, response.data.refresh.token);
+                AuthService.startRefresh();
                 navigate(`/main/user/id/${response.data.userId}`);
             }
         },error => {

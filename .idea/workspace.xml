@@ -3,21 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="5f493eff-d992-4cc6-beeb-01a32ebaa475" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/input/MyInput.jsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/input/MyInput.module.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/left-bar/left-side-bar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/left-bar/left-side-bar.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/left-bar/left-side-bar.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/left-bar/left-side-bar.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/posts/posts.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/posts/create-posts.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/posts/posts.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/posts/create-posts.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/friends/friends.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/friends/friends.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/friends/friends.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/friends/friends.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/header-bar/header-bar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/header-bar/header-bar.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/posts-area/post-area.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/posts-area/post-area.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/posts-area/post-area.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/posts-area/post-area.module.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/home/home.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/home/home.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/main/main.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/main/main.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/main/main.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/main/main.module.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/services/auth-service.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/auth-service.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/post-service.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/post-service.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,7 +44,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../react-social-network-back" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="SCSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -154,6 +144,8 @@
       <workItem from="1644788537443" duration="1442000" />
       <workItem from="1644861781330" duration="10412000" />
       <workItem from="1644939842618" duration="14864000" />
+      <workItem from="1644992742602" duration="522000" />
+      <workItem from="1645033010006" duration="11508000" />
     </task>
     <servers />
   </component>
@@ -174,25 +166,25 @@
     </option>
   </component>
   <component name="WindowStateProjectService">
-    <state x="623" y="262" width="424" height="479" key="FileChooserDialogImpl" timestamp="1644992783070">
+    <state x="623" y="262" width="424" height="479" key="FileChooserDialogImpl" timestamp="1645036010619">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
-    <state x="623" y="262" width="424" height="479" key="FileChooserDialogImpl/1680.0.1920.1080/0.0.1680.1010@0.0.1680.1010" timestamp="1644992783070" />
-    <state width="1659" height="266" key="GridCell.Tab.0.bottom" timestamp="1644960799970">
+    <state x="623" y="262" width="424" height="479" key="FileChooserDialogImpl/1680.0.1920.1080/0.0.1680.1010@0.0.1680.1010" timestamp="1645036010619" />
+    <state width="1659" height="266" key="GridCell.Tab.0.bottom" timestamp="1645046082429">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
-    <state width="1659" height="266" key="GridCell.Tab.0.bottom/1680.0.1920.1080/0.0.1680.1010@0.0.1680.1010" timestamp="1644960799970" />
-    <state width="1659" height="266" key="GridCell.Tab.0.center" timestamp="1644960799969">
+    <state width="1659" height="266" key="GridCell.Tab.0.bottom/1680.0.1920.1080/0.0.1680.1010@0.0.1680.1010" timestamp="1645046082429" />
+    <state width="1659" height="266" key="GridCell.Tab.0.center" timestamp="1645046082429">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
-    <state width="1659" height="266" key="GridCell.Tab.0.center/1680.0.1920.1080/0.0.1680.1010@0.0.1680.1010" timestamp="1644960799969" />
-    <state width="1659" height="266" key="GridCell.Tab.0.left" timestamp="1644960799969">
+    <state width="1659" height="266" key="GridCell.Tab.0.center/1680.0.1920.1080/0.0.1680.1010@0.0.1680.1010" timestamp="1645046082429" />
+    <state width="1659" height="266" key="GridCell.Tab.0.left" timestamp="1645046082428">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
-    <state width="1659" height="266" key="GridCell.Tab.0.left/1680.0.1920.1080/0.0.1680.1010@0.0.1680.1010" timestamp="1644960799969" />
-    <state width="1659" height="266" key="GridCell.Tab.0.right" timestamp="1644960799970">
+    <state width="1659" height="266" key="GridCell.Tab.0.left/1680.0.1920.1080/0.0.1680.1010@0.0.1680.1010" timestamp="1645046082428" />
+    <state width="1659" height="266" key="GridCell.Tab.0.right" timestamp="1645046082429">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
-    <state width="1659" height="266" key="GridCell.Tab.0.right/1680.0.1920.1080/0.0.1680.1010@0.0.1680.1010" timestamp="1644960799969" />
+    <state width="1659" height="266" key="GridCell.Tab.0.right/1680.0.1920.1080/0.0.1680.1010@0.0.1680.1010" timestamp="1645046082429" />
   </component>
 </project>

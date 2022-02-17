@@ -17,6 +17,7 @@ const HeaderBar = (props) => {
             if (window.confirm("Are you sure you want to get out?")) {
                 AuthService.logOut().then((response) => {
                     if (response.status === 200 ) {
+                        AuthService.stopRefresh();
                         navigate(`/home`);
                     }
                 })
