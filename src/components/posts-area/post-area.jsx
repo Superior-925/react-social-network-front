@@ -4,6 +4,7 @@ import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import Button from "@mui/material/Button";
 import PostService from "../../services/post-service";
 import CommentIcon from '@mui/icons-material/Comment';
+import AddCommentIcon from '@mui/icons-material/AddComment';
 
 const PostArea = (props) => {
 
@@ -96,16 +97,23 @@ const PostArea = (props) => {
                 />Delete post
                 </Button>
             </div>
-            {showComments && <div className={classes.commentsBlock}>
-                <textarea
-                    rows="1"
-                    className={classes.createCommentArea}
-                >
-            </textarea>
-            </div>}
+            {showComments &&
+                <div className={classes.commentsBlock}>
+                    {emptyArr && showComments && <div className={classes.noComments}>No comments yet! You will be the first.</div>}
+                    <div className={classes.addCommentBlock}>
+                        <textarea
+                            rows="2"
+                            className={classes.createCommentArea}>
+                        </textarea>
+                        <AddCommentIcon
+                            className={classes.createCommentButton}
+                        />
+                    </div>
+
+                </div>}
 
 
-            {/*{emptyArr && showComments && <div className={classes.noComments}>No comments!</div>}*/}
+
             {/*{showComments && !emptyArr && <div className={classes.commentsBlock}>*/}
             {/*    Comments:*/}
             {/*</div>}*/}
