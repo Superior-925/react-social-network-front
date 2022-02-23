@@ -64,7 +64,8 @@ const MyAvatar = (props) => {
                 margin: "0.3rem auto",
                 width: "95%",
                 height: "300px",
-                border: "solid 1px lightslategray",
+                // border: "solid 1px lightslategray",
+                borderRadius: "150px",
                 backgroundImage: `url(data:image/png;base64,${response.data})`,
                 backgroundSize: "cover"
             });
@@ -75,7 +76,8 @@ const MyAvatar = (props) => {
         margin: "0.3rem auto",
         width: "95%",
         height: "300px",
-        border: "solid 1px lightslategray",
+        // border: "solid 1px lightslategray",
+        borderRadius: "150px",
         backgroundImage: `url(${Background})`,
         backgroundSize: "cover"
     });
@@ -88,7 +90,7 @@ const MyAvatar = (props) => {
         newAvatar = pv;
     }
     function onBeforeFileLoad(elem) {
-        if (elem.target.files[0].size > 1048576) {
+        if (elem.target.files[0].size > 3145728) {
             alert("File is too big!");
             elem.target.value = "";
         }
@@ -101,7 +103,8 @@ const MyAvatar = (props) => {
                 margin: "0.3rem auto",
                 width: "95%",
                 height: "300px",
-                border: "solid 1px lightslategray",
+                // border: "solid 1px lightslategray",
+                borderRadius: "150px",
                 backgroundImage: `url(data:image/png;base64,${response.data})`,
                 backgroundSize: "cover"
             });

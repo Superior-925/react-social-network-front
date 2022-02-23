@@ -9,7 +9,7 @@ import {BrowserRouter, Route, Routes, Navigate} from "react-router-dom";
 
 import HeaderBar from "../../components/header-bar/header-bar"
 import LeftSideBar from "../../components/left-bar/left-side-bar";
-import CreatePosts from "../../components/posts/create-posts";
+import CreatePosts from "../../components/create-posts/create-posts";
 import PostArea from "../../components/posts-area/post-area";
 import PostService from "../../services/post-service";
 
@@ -17,7 +17,7 @@ import PostService from "../../services/post-service";
 //
 //     const defaultPosts = [];
 //
-//     const [posts, setPosts] = useState(defaultPosts);
+//     const [create-posts, setPosts] = useState(defaultPosts);
 //
 //     let newPostsArr = [];
 //
@@ -27,7 +27,7 @@ import PostService from "../../services/post-service";
 //                 newPostsArr.push({postText: item.postText, postId: item._id})
 //             });
 //             setPosts([...newPostsArr]);
-//             console.log(posts);
+//             console.log(create-posts);
 //             // setPosts(previousState => ([...previousState, ...newPostsArr]
 //             // ));
 //         });
@@ -36,27 +36,27 @@ import PostService from "../../services/post-service";
 //
 //     const addPostHandler = (postText, postId) => {
 //         const userPost = {postText: postText, postId: postId};
-//         newPostsArr = [...posts];
+//         newPostsArr = [...create-posts];
 //         newPostsArr.push(userPost);
 //         console.log(newPostsArr);
 //         setPosts([...newPostsArr]);
 //         // setPosts(previousState => ([...previousState, userPost]
 //         // ));
-//         console.log(posts);
+//         console.log(create-posts);
 //     };
 //
 //     const deletePostHandler = (postId) => {
 //         console.log(postId);
 //         console.log(newPostsArr);
-//         newPostsArr = [...posts];
+//         newPostsArr = [...create-posts];
 //         const foundPost = newPostsArr.findIndex((item) => item.postId == postId);
 //         console.log(foundPost);
 //         newPostsArr.splice(foundPost, 1);
 //         // const filteredArr = newPostsArr.filter((item) => {return +item.postId !== postId});
 //         console.log(newPostsArr);
 //         setPosts([...newPostsArr]);
-//         // setPosts(posts.filter(item => item.postId != postId));
-//         console.log(posts);
+//         // setPosts(create-posts.filter(item => item.postId != postId));
+//         console.log(create-posts);
 //     };
 //
 //     return (
@@ -77,7 +77,7 @@ import PostService from "../../services/post-service";
 //                                 postText
 //                             />
 //                             {
-//                                 posts.map((item, index)=> {
+//                                 create-posts.map((item, index)=> {
 //                                     return (
 //                                         <PostArea
 //                                            key={index}
@@ -106,9 +106,12 @@ class Main extends Component {
 
     componentDidMount() {
         PostService.getPosts(localStorage.getItem('userId')).then((response) => {
+            console.log(response);
             const newPostsArr = [];
             response.data.forEach((item) => {
-                newPostsArr.push({postText: item.postText, postId: item._id})
+                let date = new Date(item.updatedAt);
+                let newDate = date.toLocaleString();
+                newPostsArr.push({postText: item.postText, postId: item._id, updatedAt: newDate})
             });
             this.setState({posts: [...newPostsArr]});
             console.log(this.state.posts);
@@ -117,8 +120,10 @@ class Main extends Component {
         });
     }
 
-    addPostHandler = (postText, postId) => {
-        const userPost = {postText: postText, postId: postId};
+    addPostHandler = (postText, postId, updatedAt) => {
+        let date = new Date(updatedAt);
+        let newDate = date.toLocaleString();
+        const userPost = {postText: postText, postId: postId, updatedAt: newDate};
         const newPostsArr = [...this.state.posts];
         newPostsArr.push(userPost);
         console.log(this.newPostsArr);
@@ -137,7 +142,7 @@ class Main extends Component {
         // const filteredArr = newPostsArr.filter((item) => {return +item.postId !== postId});
         console.log(newPostsArr);
         this.setState({posts: [...newPostsArr]});
-        // setPosts(posts.filter(item => item.postId != postId));
+        // setPosts(create-posts.filter(item => item.postId != postId));
         console.log(this.state.posts);
     };
 
@@ -162,6 +167,8 @@ class Main extends Component {
                                             key={index}
                                             postText={item.postText}
                                             postId={item.postId}
+                                            updatedAt={item.updatedAt}
+                                            user={localStorage.getItem("userNickname")}
                                             onDeletePost={this.deletePostHandler}
                                         />
                                     )

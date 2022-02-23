@@ -57,6 +57,18 @@ BootstrapDialogTitle.propTypes = {
 
 function Home() {
 
+    const [open, setOpen] = React.useState(false);
+
+    const handleClickOpen = () => {
+        setOpen(true);
+    };
+    const handleClose = () => {
+        setOpen(false);
+    };
+
+    const [fullWidth, setFullWidth] = React.useState(true);
+    const [maxWidth, setMaxWidth] = React.useState('sm');
+
     const navigate = useNavigate();
 
     const [emailOrPasswordIncorrect, setEmailOrPasswordIncorrect] = useState(false);
@@ -94,18 +106,6 @@ function Home() {
             }
         });
     };
-
-    const [open, setOpen] = React.useState(false);
-
-    const handleClickOpen = () => {
-        setOpen(true);
-    };
-    const handleClose = () => {
-        setOpen(false);
-    };
-
-    const [fullWidth, setFullWidth] = React.useState(true);
-    const [maxWidth, setMaxWidth] = React.useState('sm');
 
     const validationsSchemaLogin = yup.object().shape({
         password: yup.string().typeError('Must be a string').required('Required').min(6, 'Password must be longer than or equal to six characters'),

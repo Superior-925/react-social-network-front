@@ -1,14 +1,8 @@
-.postForm {
+.searchForm {
   display: flex;
-  flex-direction: column;
+  justify-content: center;
+  flex-wrap: nowrap;
   align-items: center;
   margin: 1rem auto;
-  width: 100%;
-}
-
-.postBlock{
-}
-
-.postArea {
-  width: 100%;
+  width: 75%;
 }

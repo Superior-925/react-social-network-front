@@ -1,0 +1,15 @@
+.addCommentBlock {
+  width: 100%;
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.createCommentArea {
+  width: 80%;
+  border: lightgrey solid 1px;
+  border-radius: 5px;
+  padding: 5px 5px;
+  resize: none;
+}

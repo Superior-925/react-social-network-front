@@ -14,7 +14,7 @@ function Friends() {
     //             newPostsArr.push({postText: item.postText, postId: item._id})
     //         });
     //         setPosts([...newPostsArr]);
-    //         console.log(posts);
+    //         console.log(create-posts);
     //         // setPosts(previousState => ([...previousState, ...newPostsArr]
     //         // ));
     //     });

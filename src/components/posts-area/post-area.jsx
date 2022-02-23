@@ -4,13 +4,18 @@ import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
 import Button from "@mui/material/Button";
 import PostService from "../../services/post-service";
 import CommentIcon from '@mui/icons-material/Comment';
-import AddCommentIcon from '@mui/icons-material/AddComment';
+import CreateComments from "../create-comments/create-comments";
+
+// import IconButton from '@mui/material/IconButton';
+// import AddCommentIcon from '@mui/icons-material/AddComment';
 
 const PostArea = (props) => {
 
+    const [post, setPost] = useState(props.postText);
+
     let [showComments, setShowComments] = useState(false);
 
-    let [commentsArray, setCommentsArray] = useState([]);
+    let [commentsArray, setCommentsArray] = useState([{sd: 23}]);
 
     let emptyArr = false;
 
@@ -22,41 +27,40 @@ const PostArea = (props) => {
         emptyArr = true;
     }
 
-    const postChangeHandler = () => {
-
+    const postChangeHandler = (value) => {
+        setPost(value);
+        console.log(post);
     };
 
     const deletePostHandler = () => {
-        console.log(props.postId);
-        PostService.deletePost(props.postId).then((response) => {
-            console.log(response);
-            props.onDeletePost(response.data._id);
-        })
+        if(window.confirm("Are you sure you want to delete the post?")) {
+            PostService.deletePost(props.postId).then((response) => {
+                console.log(response);
+                props.onDeletePost(response.data._id);
+            })
+        }
     };
 
     const showCommentsHandler = () => {
         setShowComments(!showComments);
     };
 
-    // const tx = document.getElementsByTagName("textarea");
-    // for (let i = 0; i < tx.length; i++) {
-    //     tx[i].setAttribute("style", "height:" + (tx[i].scrollHeight) + "px;overflow-y:hidden;");
-    //     tx[i].addEventListener("input", OnInput, false);
-    // }
-    //
-    // function OnInput() {
-    //     this.style.height = "auto";
-    //     this.style.height = (this.scrollHeight) + "px";
-    // }
-
     return (
         <div className={classes.postAreaBlock}>
             <textarea
+                id="post-text-area"
+                name="textarea"
                 rows="3"
                 value={props.postText}
                 className={classes.postArea}
-                onChange={postChangeHandler}>
-            </textarea>
+                onChange={(event) => postChangeHandler(event.target.value)}
+            />
+            <div className={classes.postInfo}>
+                <div className={classes.postAuthor}>{props.user}</div>
+                <span className={classes.dot}>
+                </span>
+                <div className={classes.postDate}>{props.updatedAt}</div>
+            </div>
             <div className={classes.buttonsBlock}>
                 <Button
                     sx={{
@@ -100,23 +104,10 @@ const PostArea = (props) => {
             {showComments &&
                 <div className={classes.commentsBlock}>
                     {emptyArr && showComments && <div className={classes.noComments}>No comments yet! You will be the first.</div>}
-                    <div className={classes.addCommentBlock}>
-                        <textarea
-                            rows="2"
-                            className={classes.createCommentArea}>
-                        </textarea>
-                        <AddCommentIcon
-                            className={classes.createCommentButton}
-                        />
-                    </div>
+                    <div className={classes.commentsBlockTitle}>Comments:</div>
+                    <CreateComments/>
 
                 </div>}
-
-
-
-            {/*{showComments && !emptyArr && <div className={classes.commentsBlock}>*/}
-            {/*    Comments:*/}
-            {/*</div>}*/}
         </div>
     );
 };

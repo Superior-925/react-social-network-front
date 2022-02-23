@@ -15,7 +15,7 @@ const CreatePosts = (props) => {
 
     function createPost(values, resetForm) {
         PostService.createPost(localStorage.getItem('userId'), values).then((response) => {
-            props.onCreatePost(response.data.postText, response.data._id);
+            props.onCreatePost(response.data.postText, response.data._id, response.data.updatedAt);
             resetForm();
         })
     }
