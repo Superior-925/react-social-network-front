@@ -6,3 +6,15 @@
   margin: 1rem auto;
   width: 75%;
 }
+
+.searchResultsBlockItem {
+  padding: 0 1rem 0 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.foundFriendName {
+  font-weight: bold;
+}

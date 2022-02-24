@@ -27,9 +27,12 @@ const PostArea = (props) => {
         emptyArr = true;
     }
 
-    const postChangeHandler = (value) => {
+    const postChangeText = (value) => {
         setPost(value);
-        console.log(post);
+    };
+
+    const postChangeHandler = (value) => {
+        props.onChangePostHandler(value, props.postId);
     };
 
     const deletePostHandler = () => {
@@ -51,9 +54,10 @@ const PostArea = (props) => {
                 id="post-text-area"
                 name="textarea"
                 rows="3"
-                value={props.postText}
+                value={post}
                 className={classes.postArea}
-                onChange={(event) => postChangeHandler(event.target.value)}
+                onBlur={(event) => postChangeHandler(event.target.value)}
+                onChange={(event) => postChangeText(event.target.value)}
             />
             <div className={classes.postInfo}>
                 <div className={classes.postAuthor}>{props.user}</div>

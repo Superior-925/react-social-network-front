@@ -29,6 +29,16 @@ class PostService {
         return response;
     }
 
+    async changePost(postText, postId) {
+
+        const data = {postText: postText, postId: postId};
+
+        const response = await axios.patch(`http://${configDev.hostPort}/post`, data, {
+            headers: {"Authorization" : `${localStorage.getItem("token")}`}
+        });
+        return response;
+    }
+
 }
 
 export default new PostService();

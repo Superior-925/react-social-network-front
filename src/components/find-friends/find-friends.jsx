@@ -6,16 +6,17 @@ import { Formik } from 'formik';
 import * as yup from 'yup';
 import Button from "@mui/material/Button";
 import FriendsService from "../../services/friends-service";
+import PersonAddIcon from '@mui/icons-material/PersonAdd';
+import CircularProgress from '@mui/material/CircularProgress';
+import Box from '@mui/material/Box';
 
 import PropTypes from 'prop-types';
 import { styled } from '@mui/material/styles';
 import Dialog from '@mui/material/Dialog';
 import DialogTitle from '@mui/material/DialogTitle';
 import DialogContent from '@mui/material/DialogContent';
-import DialogActions from '@mui/material/DialogActions';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
-import PostArea from "../posts-area/post-area";
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
     '& .MuiDialogContent-root': {
@@ -57,6 +58,8 @@ BootstrapDialogTitle.propTypes = {
 
 const FindFriends = (props) => {
 
+    const [spinner, setSpinner] = React.useState(false);
+
     const [foundFriends, setFoundFriends] = React.useState([]);
 
     const [open, setOpen] = React.useState(false);
@@ -76,24 +79,20 @@ const FindFriends = (props) => {
     });
 
     function findFriends(values, resetForm) {
-        console.log(values);
         const friendsIgnoreIds = [];
         friendsIgnoreIds.push(localStorage.getItem("userId"));
+        handleClickOpen();
+        setSpinner(true);
         FriendsService.findFriends(values.friendName, friendsIgnoreIds).then((response) => {
-            console.log(response);
             const foundFriends = [];
             response.data.forEach((item) => {
                 const candidate = {nickName: item.nickname, email: item.email, id: item._id};
                 foundFriends.push(candidate);
             });
+            setSpinner(false);
             setFoundFriends([...foundFriends])
         });
-        handleClickOpen();
         resetForm();
-        // PostService.createPost(localStorage.getItem('userId'), values).then((response) => {
-        //     props.onCreatePost(response.data.postText, response.data._id);
-        //     resetForm();
-        // })
     }
 
     return (
@@ -159,21 +158,37 @@ const FindFriends = (props) => {
                         flexDirection: "column"
                     }}
                     dividers>
-                    <div className={classes.searchResultsBlock}>
-                        {
+                    <div>
+                        {spinner && <Box
+                        sx={{
+                            display: 'flex',
+                            justifyContent: "center"
+                        }}>
+                            <CircularProgress />
+                        </Box>}
+                        {!spinner &&
                             foundFriends.map((item, index)=> {
                                 return (
-                                    <div>
-                                        {item.nickName}
+                                    <div key={index} className={classes.searchResultsBlockItem}>
+                                        <div className={classes.foundFriendName}>
+                                            {item.nickName}
+                                        </div>
+                                        <Button
+                                            sx={{
+                                                variant: "contained",
+                                                display: "flex",
+                                                alignItems: "center"
+                                            }}
+                                            variant="contained"
+                                        >
+                                            <PersonAddIcon
+                                                sx={{
+                                                    marginRight: "0.3rem"
+                                                }}
+                                            /> Add to friends
+                                        </Button>
+
                                     </div>
-                                    // <PostArea
-                                    //     key={index}
-                                    //     postText={item.postText}
-                                    //     postId={item.postId}
-                                    //     updatedAt={item.updatedAt}
-                                    //     user={localStorage.getItem("userNickname")}
-                                    //     onDeletePost={this.deletePostHandler}
-                                    // />
                                 )
                             })
                         }

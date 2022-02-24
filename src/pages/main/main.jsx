@@ -146,6 +146,21 @@ class Main extends Component {
         console.log(this.state.posts);
     };
 
+    postChangeHandler = (postText, postId) => {
+        console.log(postText);
+        console.log(postId);
+        PostService.changePost(postText, postId).then((response) => {
+            console.log(response);
+            let date = new Date(response.data.updatedAt);
+            let newDate = date.toLocaleString();
+            const objIndex = this.state.posts.findIndex((obj => obj.postId === response.data._id));
+            const newPostsArr = [...this.state.posts];
+            newPostsArr[objIndex].postText = postText;
+            newPostsArr[objIndex].updatedAt = newDate;
+            this.setState({posts: [...newPostsArr]});
+        })
+    };
+
     render() {
         return (
             <div>
@@ -164,12 +179,13 @@ class Main extends Component {
                                 this.state.posts.map((item, index)=> {
                                     return (
                                         <PostArea
-                                            key={index}
+                                            key={item.postId}
                                             postText={item.postText}
                                             postId={item.postId}
                                             updatedAt={item.updatedAt}
                                             user={localStorage.getItem("userNickname")}
                                             onDeletePost={this.deletePostHandler}
+                                            onChangePostHandler={this.postChangeHandler}
                                         />
                                     )
                                 })

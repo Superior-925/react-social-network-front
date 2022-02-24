@@ -3,16 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="5f493eff-d992-4cc6-beeb-01a32ebaa475" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/avatar-block/avatar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/avatar-block/avatar.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/find-friends/find-friends.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/find-friends/find-friends.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/find-friends/find-friends.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/find-friends/find-friends.module.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/posts-area/post-area.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/posts-area/post-area.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/posts-area/post-area.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/posts-area/post-area.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/posts/create-posts.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/create-posts/create-posts.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/posts/create-posts.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/create-posts/create-posts.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/friends/friends.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/friends/friends.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/home/home.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/home/home.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/main/main.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/main/main.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/post-service.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/post-service.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -156,7 +151,8 @@
       <workItem from="1645169228509" duration="909000" />
       <workItem from="1645454524118" duration="13214000" />
       <workItem from="1645548804460" duration="10445000" />
-      <workItem from="1645640852664" duration="7779000" />
+      <workItem from="1645640852664" duration="8287000" />
+      <workItem from="1645726956266" duration="11737000" />
     </task>
     <servers />
   </component>
@@ -185,21 +181,25 @@
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
     <state x="623" y="262" width="424" height="479" key="FileChooserDialogImpl/1680.0.1920.1080/0.0.1680.1010@0.0.1680.1010" timestamp="1645464136871" />
-    <state width="1659" height="266" key="GridCell.Tab.0.bottom" timestamp="1645572176633">
+    <state width="1659" height="266" key="GridCell.Tab.0.bottom" timestamp="1645739026222">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
-    <state width="1659" height="266" key="GridCell.Tab.0.bottom/1680.0.1920.1080/0.0.1680.1010@0.0.1680.1010" timestamp="1645572176633" />
-    <state width="1659" height="266" key="GridCell.Tab.0.center" timestamp="1645572176633">
+    <state width="1659" height="266" key="GridCell.Tab.0.bottom/1680.0.1920.1080/0.0.1680.1010@0.0.1680.1010" timestamp="1645739026222" />
+    <state width="1659" height="266" key="GridCell.Tab.0.center" timestamp="1645739026222">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
-    <state width="1659" height="266" key="GridCell.Tab.0.center/1680.0.1920.1080/0.0.1680.1010@0.0.1680.1010" timestamp="1645572176632" />
-    <state width="1659" height="266" key="GridCell.Tab.0.left" timestamp="1645572176632">
+    <state width="1659" height="266" key="GridCell.Tab.0.center/1680.0.1920.1080/0.0.1680.1010@0.0.1680.1010" timestamp="1645739026222" />
+    <state width="1659" height="266" key="GridCell.Tab.0.left" timestamp="1645739026222">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
-    <state width="1659" height="266" key="GridCell.Tab.0.left/1680.0.1920.1080/0.0.1680.1010@0.0.1680.1010" timestamp="1645572176632" />
-    <state width="1659" height="266" key="GridCell.Tab.0.right" timestamp="1645572176633">
+    <state width="1659" height="266" key="GridCell.Tab.0.left/1680.0.1920.1080/0.0.1680.1010@0.0.1680.1010" timestamp="1645739026222" />
+    <state width="1659" height="266" key="GridCell.Tab.0.right" timestamp="1645739026222">
       <screen x="0" y="0" width="1680" height="1010" />
     </state>
-    <state width="1659" height="266" key="GridCell.Tab.0.right/1680.0.1920.1080/0.0.1680.1010@0.0.1680.1010" timestamp="1645572176633" />
+    <state width="1659" height="266" key="GridCell.Tab.0.right/1680.0.1920.1080/0.0.1680.1010@0.0.1680.1010" timestamp="1645739026222" />
+    <state x="584" y="138" width="501" height="727" key="refactoring.ChangeSignatureDialog" timestamp="1645730186137">
+      <screen x="0" y="0" width="1680" height="1010" />
+    </state>
+    <state x="584" y="138" width="501" height="727" key="refactoring.ChangeSignatureDialog/1680.0.1920.1080/0.0.1680.1010@0.0.1680.1010" timestamp="1645730186137" />
   </component>
 </project>
