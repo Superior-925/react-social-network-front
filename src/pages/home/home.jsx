@@ -4,6 +4,7 @@ import FacebookLogo from "../../assets/facebook-logo.png";
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import AuthService from "../../services/auth-service";
+import {useActions} from "../../hooks/useActions";
 
 import PropTypes from 'prop-types';
 import { styled } from '@mui/material/styles';
@@ -59,6 +60,17 @@ function Home() {
 
     const [open, setOpen] = React.useState(false);
 
+    const validationsSchemaLogin = yup.object().shape({
+        password: yup.string().typeError('Must be a string').required('Required').min(6, 'Password must be longer than or equal to six characters'),
+        email: yup.string().email('Please enter a valid email').required('Required'),
+    });
+
+    const validationsSchemaSignUp = yup.object().shape({
+        password: yup.string().typeError('Must be a string').required('Required').min(6, 'Password must be longer than or equal to six characters'),
+        email: yup.string().email('Please enter a valid email').required('Required'),
+        nickname: yup.string().required('Required'),
+    });
+
     const handleClickOpen = () => {
         setOpen(true);
     };
@@ -68,6 +80,8 @@ function Home() {
 
     const [fullWidth, setFullWidth] = React.useState(true);
     const [maxWidth, setMaxWidth] = React.useState('sm');
+
+    const {setNickname} = useActions()
 
     const navigate = useNavigate();
 
@@ -79,7 +93,8 @@ function Home() {
         setEmailOrPasswordIncorrect(false);
         AuthService.logIn(data).then((response) => {
             if (response.status === 200 ) {
-                AuthService.setLocalStorageData(response.data.userId, response.data.userNickname, response.data.token, response.data.refresh.token);
+                setNickname(response.data.userNickname);
+                AuthService.setLocalStorageData(response.data.userId, response.data.token, response.data.refresh.token);
                 AuthService.startRefresh();
                 navigate(`/main/user/id/${response.data.userId}`);
             }
@@ -96,7 +111,8 @@ function Home() {
         AuthService.signUp(data).then((response) => {
             console.log(response);
             if (response.status === 200 ) {
-                AuthService.setLocalStorageData(response.data.userId, response.data.userNickname, response.data.token, response.data.refresh.token);
+                setNickname(response.data.userNickname);
+                AuthService.setLocalStorageData(response.data.userId, response.data.token, response.data.refresh.token);
                 AuthService.startRefresh();
                 navigate(`/main/user/id/${response.data.userId}`);
             }
@@ -106,17 +122,6 @@ function Home() {
             }
         });
     };
-
-    const validationsSchemaLogin = yup.object().shape({
-        password: yup.string().typeError('Must be a string').required('Required').min(6, 'Password must be longer than or equal to six characters'),
-        email: yup.string().email('Please enter a valid email').required('Required'),
-    });
-
-    const validationsSchemaSignUp = yup.object().shape({
-        password: yup.string().typeError('Must be a string').required('Required').min(6, 'Password must be longer than or equal to six characters'),
-        email: yup.string().email('Please enter a valid email').required('Required'),
-        nickname: yup.string().required('Required'),
-    });
 
     return (
         <div>

@@ -18,3 +18,12 @@
 .foundFriendName {
   font-weight: bold;
 }
+
+.nothingFoundMessage {
+  display: flex;
+  justify-content: center;
+}
+
+.addDeleteRequestsButtonsBlock {
+  display: flex;
+}

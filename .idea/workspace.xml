@@ -2,12 +2,31 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5f493eff-d992-4cc6-beeb-01a32ebaa475" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/redux/actions/actionTypes.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/redux/actions/post.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/redux/reducers/comment-reducer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/redux/reducers/post.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/redux/rootReducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/avatar-block/avatar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/avatar-block/avatar.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/avatar-block/avatar.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/avatar-block/avatar.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/create-posts/create-posts.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/create-posts/create-posts.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/create-posts/create-posts.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/create-posts/create-posts.module.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/find-friends/find-friends.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/find-friends/find-friends.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/find-friends/find-friends.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/find-friends/find-friends.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/header-bar/header-bar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/header-bar/header-bar.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/header-bar/header-bar.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/header-bar/header-bar.module.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/posts-area/post-area.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/posts-area/post-area.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/home/home.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/home/home.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/main/main.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/main/main.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/post-service.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/post-service.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/auth-service.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/auth-service.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/avatar-service.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/friends-service.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/friends-service.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,11 +78,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src" />
       <recent name="$PROJECT_DIR$/src/components/find-friends" />
       <recent name="$PROJECT_DIR$/src/pages/main" />
       <recent name="$PROJECT_DIR$/src/services" />
       <recent name="$PROJECT_DIR$/src/assets" />
-      <recent name="$PROJECT_DIR$/src/components/input" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/pages/home" />
@@ -84,7 +103,7 @@
       <method v="2" />
     </configuration>
   </component>
-  <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -152,54 +171,55 @@
       <workItem from="1645454524118" duration="13214000" />
       <workItem from="1645548804460" duration="10445000" />
       <workItem from="1645640852664" duration="8287000" />
-      <workItem from="1645726956266" duration="11737000" />
+      <workItem from="1645726956266" duration="11940000" />
+      <workItem from="1645824204901" duration="3665000" />
+      <workItem from="1645871696498" duration="11533000" />
+      <workItem from="1645982800289" duration="10239000" />
+      <workItem from="1646163223370" duration="4538000" />
+      <workItem from="1646291380448" duration="4467000" />
+      <workItem from="1646303530664" duration="4774000" />
+      <workItem from="1646417485760" duration="12118000" />
+      <workItem from="1646596520105" duration="8168000" />
+      <workItem from="1646645006340" duration="1563000" />
+      <workItem from="1646904823569" duration="8853000" />
+      <workItem from="1646986157867" duration="6556000" />
+      <workItem from="1647253122373" duration="338000" />
+      <workItem from="1647255125737" duration="3723000" />
+      <workItem from="1647429666753" duration="2061000" />
+      <workItem from="1647432015920" duration="124000" />
+      <workItem from="1647511314435" duration="6575000" />
+      <workItem from="1647936516852" duration="983000" />
+      <workItem from="1648021242495" duration="8000" />
+      <workItem from="1648205184154" duration="353000" />
+      <workItem from="1648206345717" duration="894000" />
+      <workItem from="1648237294071" duration="5824000" />
+      <workItem from="1648393402697" duration="3394000" />
+      <workItem from="1648400072062" duration="2186000" />
+      <workItem from="1648408629790" duration="680000" />
+      <workItem from="1654241433124" duration="619000" />
+      <workItem from="1654243725344" duration="2479000" />
+      <workItem from="1654248859509" duration="9484000" />
+      <workItem from="1654372690785" duration="8391000" />
+      <workItem from="1654509491029" duration="4558000" />
+      <workItem from="1654533983885" duration="8000" />
+      <workItem from="1654534013755" duration="9606000" />
+      <workItem from="1654681489724" duration="186000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="COLUMN_ORDER" />
-            </State>
+            <State />
           </value>
         </entry>
       </map>
     </option>
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="555" y="310" width="560" height="383" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1645462045593">
-      <screen x="0" y="0" width="1680" height="1010" />
-    </state>
-    <state x="555" y="310" width="560" height="383" key="#com.intellij.fileTypes.FileTypeChooser/1680.0.1920.1080/0.0.1680.1010@0.0.1680.1010" timestamp="1645462045593" />
-    <state x="623" y="262" width="424" height="479" key="FileChooserDialogImpl" timestamp="1645464136871">
-      <screen x="0" y="0" width="1680" height="1010" />
-    </state>
-    <state x="623" y="262" width="424" height="479" key="FileChooserDialogImpl/1680.0.1920.1080/0.0.1680.1010@0.0.1680.1010" timestamp="1645464136871" />
-    <state width="1659" height="266" key="GridCell.Tab.0.bottom" timestamp="1645739026222">
-      <screen x="0" y="0" width="1680" height="1010" />
-    </state>
-    <state width="1659" height="266" key="GridCell.Tab.0.bottom/1680.0.1920.1080/0.0.1680.1010@0.0.1680.1010" timestamp="1645739026222" />
-    <state width="1659" height="266" key="GridCell.Tab.0.center" timestamp="1645739026222">
-      <screen x="0" y="0" width="1680" height="1010" />
-    </state>
-    <state width="1659" height="266" key="GridCell.Tab.0.center/1680.0.1920.1080/0.0.1680.1010@0.0.1680.1010" timestamp="1645739026222" />
-    <state width="1659" height="266" key="GridCell.Tab.0.left" timestamp="1645739026222">
-      <screen x="0" y="0" width="1680" height="1010" />
-    </state>
-    <state width="1659" height="266" key="GridCell.Tab.0.left/1680.0.1920.1080/0.0.1680.1010@0.0.1680.1010" timestamp="1645739026222" />
-    <state width="1659" height="266" key="GridCell.Tab.0.right" timestamp="1645739026222">
-      <screen x="0" y="0" width="1680" height="1010" />
-    </state>
-    <state width="1659" height="266" key="GridCell.Tab.0.right/1680.0.1920.1080/0.0.1680.1010@0.0.1680.1010" timestamp="1645739026222" />
-    <state x="584" y="138" width="501" height="727" key="refactoring.ChangeSignatureDialog" timestamp="1645730186137">
-      <screen x="0" y="0" width="1680" height="1010" />
-    </state>
-    <state x="584" y="138" width="501" height="727" key="refactoring.ChangeSignatureDialog/1680.0.1920.1080/0.0.1680.1010@0.0.1680.1010" timestamp="1645730186137" />
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>

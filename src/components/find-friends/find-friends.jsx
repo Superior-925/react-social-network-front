@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useRef, useEffect} from 'react';
 import TextField from '@mui/material/TextField';
 import classes from './find-friends.module.scss';
 import PeopleIcon from '@mui/icons-material/People';
@@ -16,7 +16,10 @@ import Dialog from '@mui/material/Dialog';
 import DialogTitle from '@mui/material/DialogTitle';
 import DialogContent from '@mui/material/DialogContent';
 import IconButton from '@mui/material/IconButton';
+import DeleteIcon from '@mui/icons-material/Delete';
 import CloseIcon from '@mui/icons-material/Close';
+import { useStateWithCallbackLazy } from 'use-state-with-callback';
+import ProfileService from "../../services/profile-service";
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
     '& .MuiDialogContent-root': {
@@ -58,7 +61,22 @@ BootstrapDialogTitle.propTypes = {
 
 const FindFriends = (props) => {
 
-    const [spinner, setSpinner] = React.useState(false);
+    useEffect(() => {
+        FriendsService.getFriendRequests(localStorage.getItem('userId')).then((response) => {
+            const friendRequestArr = [];
+            // response.data.iCandidate.forEach((item) => {
+            //     const requestToMe = {userId: item.userId, candidateId: item.candidateId};
+            //     friendRequestArr.push(requestToMe);
+            // });
+            // setFriendsRequests([...friendRequestArr], (current) => {});
+        });
+    }, []);
+
+    const [friendsRequests, setFriendsRequests] = useStateWithCallbackLazy([]);
+
+    const [emptyFoundFriendsArr, setEmptyFoundFriendsArr] = React.useState(false);
+
+    const [findFriendsSpinner, setFindFriendsSpinner] = React.useState(false);
 
     const [foundFriends, setFoundFriends] = React.useState([]);
 
@@ -78,21 +96,121 @@ const FindFriends = (props) => {
         friendName: yup.string().required('Required'),
     });
 
-    function findFriends(values, resetForm) {
+    const findFriends = (values, resetForm) => {
         const friendsIgnoreIds = [];
         friendsIgnoreIds.push(localStorage.getItem("userId"));
         handleClickOpen();
-        setSpinner(true);
+        setFindFriendsSpinner(true);
         FriendsService.findFriends(values.friendName, friendsIgnoreIds).then((response) => {
             const foundFriends = [];
             response.data.forEach((item) => {
                 const candidate = {nickName: item.nickname, email: item.email, id: item._id};
                 foundFriends.push(candidate);
             });
-            setSpinner(false);
-            setFoundFriends([...foundFriends])
+            if (!foundFriends.length) {
+                setEmptyFoundFriendsArr(true)
+            }
+            if (foundFriends.length) {
+                setEmptyFoundFriendsArr(false)
+            }
+            setFindFriendsSpinner(false);
+            setFoundFriends([...foundFriends]);
+            resetForm();
+            FriendsService.getFriendRequests(localStorage.getItem('userId')).then((response) => {
+                const friendRequestArr = [];
+                response.data.candidates.forEach((item) => {
+                    const friendRequest = {userId: item.userId, candidateId: item.candidateId};
+                    friendRequestArr.push(friendRequest);
+                });
+                setFriendsRequests([...friendRequestArr], (currentArr) => {
+                    foundFriends.map((friend) => {
+                        currentArr.map((candidate) => {
+                            if (friend.id === candidate.candidateId) {
+                                const button = document.getElementById(candidate.candidateId);
+                                button.style.pointerEvents = "none";
+                                button.style.color = "#666666";
+                                button.style.backgroundColor = "#cccccc";
+                                button.textContent = "Request already sent";
+
+                                const deleteButton = document.getElementById(`delete-button-${friend.id}`);
+                                deleteButton.style.display = "block";
+                            }
+                        })
+                    })
+                });
+            });
         });
-        resetForm();
+    };
+
+    const addFriendRequest = (event, userId, candidateId) => {
+        setFindFriendsSpinner(true);
+
+        FriendsService.addFriendRequest(userId, candidateId).then((response) => {
+            if (response.status === 200) {
+                setFindFriendsSpinner(false);
+                const friendRequestArr = [...friendsRequests];
+                const friendRequest = {userId: userId, candidateId: candidateId};
+                friendRequestArr.push(friendRequest);
+                setFriendsRequests([...friendRequestArr], (currentArr) => {
+                    foundFriends.map((friend) => {
+                        currentArr.map((candidate) => {
+                            if (friend.id === candidate.candidateId) {
+                                const button = document.getElementById(friend.id);
+                                button.style.pointerEvents = "none";
+                                button.style.color = "#666666";
+                                button.style.backgroundColor = "#cccccc";
+                                button.textContent = "Request already sent";
+
+                                const deleteButton = document.getElementById(`delete-button-${friend.id}`);
+                                deleteButton.style.display = "block";
+                            }
+                            if (friend.id === candidateId) {
+                                const button = document.getElementById(friend.id);
+                                button.style.pointerEvents = "none";
+                                button.style.color = "#666666";
+                                button.style.backgroundColor = "#cccccc";
+                                button.textContent = "Request has been sent";
+
+                                const deleteButton = document.getElementById(`delete-button-${friend.id}`);
+                                deleteButton.style.display = "block";
+                            }
+                        })
+                    });
+                });
+            }
+        });
+    };
+
+    const deleteFriendRequest = (event, userId, candidateId) => {
+        setFindFriendsSpinner(true);
+        console.log(friendsRequests);
+        FriendsService.deleteFriendRequest(userId, candidateId).then((response) => {
+            if (response.status === 200) {
+                setFindFriendsSpinner(false);
+                const newArr = [...friendsRequests];
+                const foundIndex = newArr.findIndex((item) =>
+                    (+item.userId === +response.data.userId && +item.candidateId === +response.data.candidateId));
+                newArr.splice(foundIndex, 1);
+                setFriendsRequests([...newArr], (currentArr) => {
+                    console.log(currentArr);
+                    foundFriends.map((friend) => {
+                        currentArr.map((candidate) => {
+                            if (friend.id === candidate.candidateId) {
+                                const button = document.getElementById(candidate.candidateId);
+                                button.style.pointerEvents = "none";
+                                button.style.color = "#666666";
+                                button.style.backgroundColor = "#cccccc";
+                                button.textContent = "Request already sent";
+
+                                const deleteButton = document.getElementById(`delete-button-${friend.id}`);
+                                deleteButton.style.display = "block";
+                            }
+                        })
+                    })
+                });
+            }
+
+        });
     }
 
     return (
@@ -159,39 +277,60 @@ const FindFriends = (props) => {
                     }}
                     dividers>
                     <div>
-                        {spinner && <Box
+                        {findFriendsSpinner && <Box
                         sx={{
                             display: 'flex',
                             justifyContent: "center"
                         }}>
                             <CircularProgress />
                         </Box>}
-                        {!spinner &&
+                        {!findFriendsSpinner &&
                             foundFriends.map((item, index)=> {
                                 return (
                                     <div key={index} className={classes.searchResultsBlockItem}>
                                         <div className={classes.foundFriendName}>
                                             {item.nickName}
                                         </div>
-                                        <Button
-                                            sx={{
-                                                variant: "contained",
-                                                display: "flex",
-                                                alignItems: "center"
-                                            }}
-                                            variant="contained"
-                                        >
-                                            <PersonAddIcon
+                                        <div className={classes.addDeleteRequestsButtonsBlock}>
+                                            <Button
                                                 sx={{
-                                                    marginRight: "0.3rem"
+                                                    variant: "contained",
+                                                    display: "flex",
+                                                    alignItems: "center"
                                                 }}
-                                            /> Add to friends
-                                        </Button>
+                                                variant="contained"
+                                                id={`${item.id}`}
+                                                onClick={(e) => {
+                                                    addFriendRequest(e, localStorage.getItem('userId'), item.id);
+                                                }}
+                                            >
+                                                <PersonAddIcon
+                                                    sx={{
+                                                        marginRight: "0.3rem"
+                                                    }}
+                                                /> Add to friends
+                                            </Button>
+                                                <IconButton
+                                                    id={`delete-button-${item.id}`}
+                                                    sx={{
+                                                        display: "none",
+                                                        marginLeft: "0.3rem",
+                                                        '&:hover': {
+                                                            color: "royalBlue"
+                                                        }
+                                                    }}
+                                                    onClick={(e) => {
+                                                        deleteFriendRequest(e, localStorage.getItem('userId'), item.id);
+                                                    }}>
+                                                    <DeleteIcon/>
+                                                </IconButton>
+                                        </div>
 
                                     </div>
                                 )
                             })
                         }
+                        {emptyFoundFriendsArr && <h3 className={classes.nothingFoundMessage}>Nothing found!</h3>}
                     </div>
                 </DialogContent>
 

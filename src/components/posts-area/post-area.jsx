@@ -15,7 +15,7 @@ const PostArea = (props) => {
 
     let [showComments, setShowComments] = useState(false);
 
-    let [commentsArray, setCommentsArray] = useState([{sd: 23}]);
+    let [commentsArray, setCommentsArray] = useState([{sd: 25}]);
 
     let emptyArr = false;
 
@@ -108,7 +108,7 @@ const PostArea = (props) => {
             {showComments &&
                 <div className={classes.commentsBlock}>
                     {emptyArr && showComments && <div className={classes.noComments}>No comments yet! You will be the first.</div>}
-                    <div className={classes.commentsBlockTitle}>Comments:</div>
+                    {!emptyArr && showComments && <div className={classes.commentsBlockTitle}>Comments:</div>}
                     <CreateComments/>
 
                 </div>}

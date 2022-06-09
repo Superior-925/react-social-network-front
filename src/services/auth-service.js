@@ -32,9 +32,8 @@ class AuthService {
         return response;
     }
 
-    setLocalStorageData(userId, userNickname, token, refresh) {
+    setLocalStorageData(userId, token, refresh) {
         localStorage.setItem("userId", userId);
-        localStorage.setItem("userNickname", userNickname);
         localStorage.setItem("token", token);
         localStorage.setItem("refresh", refresh);
     }

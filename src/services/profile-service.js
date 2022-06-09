@@ -1,7 +1,7 @@
 import axios from "axios";
 import {configDev} from "../environment/environment.dev"
 
-class AvatarService {
+class ProfileService {
 
     async changeAvatar(userId, file) {
 
@@ -20,6 +20,16 @@ class AvatarService {
         });
         return response;
     }
+
+    async changeNickname(userId, nickname) {
+
+        const data = {userId: userId, nickname: nickname.nickname};
+
+        const response = await axios.post(`http://${configDev.hostPort}/nickname`, data, {
+            headers: {"Authorization" : `${localStorage.getItem("token")}`}
+        });
+        return response;
+    }
 }
 
-export default new AvatarService();
+export default new ProfileService();
