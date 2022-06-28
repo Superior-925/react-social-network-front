@@ -28,7 +28,7 @@ export const profileReducer = (state = initialState, action) => {
         case FETCH_NICKNAME_ERROR:
             return {...state, loading: false, error: action.payload}
         case CHANGE_NICKNAME:
-            return {...state, loading: true}
+            return {...state, loading: true, error: null,}
         case CHANGE_NICKNAME_SUCCESS:
             return {...state, loading: false, nickname: action.payload}
         case CHANGE_NICKNAME_ERROR:

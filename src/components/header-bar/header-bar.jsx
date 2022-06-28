@@ -4,9 +4,7 @@ import {useSelector} from "react-redux";
 import {useActions} from "../../hooks/useActions";
 import classes from './header-bar.module.scss';
 import FacebookLogo from "../../assets/facebook-logo.png";
-import LogoutIcon from '@mui/icons-material/Logout';
 import AuthService from "../../services/auth-service";
-import ProfileService from "../../services/profile-service";
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
@@ -19,12 +17,15 @@ import { styled } from '@mui/material/styles';
 import Dialog from '@mui/material/Dialog';
 import DialogTitle from '@mui/material/DialogTitle';
 import DialogContent from '@mui/material/DialogContent';
-import DialogActions from '@mui/material/DialogActions';
 import {Formik} from "formik";
 import TextField from "@mui/material/TextField";
 import * as yup from 'yup';
 import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
-import {changeNickname} from "../../store/action-creators/profile";
+// import {changeNickname} from "../../store/action-creators/profile";
+import {ListItemIcon} from "@mui/material";
+import {Logout, Settings} from "@mui/icons-material";
+import {LoadingButton} from "@mui/lab";
+import CircularProgress from "@mui/material/CircularProgress";
 
 
 
@@ -69,8 +70,6 @@ BootstrapDialogTitle.propTypes = {
 
 const HeaderBar = (props) => {
 
-    //const [nickname, setNickname] = useState(localStorage.getItem('userNickname'));
-
     useEffect(() => {
         if (nickname == null) {
             fetchNickname(localStorage.getItem('userId'));
@@ -80,8 +79,6 @@ const HeaderBar = (props) => {
     const {nickname, loading, error} = useSelector(state => state.profile)
 
     const {changeNickname, fetchNickname} = useActions();
-
-    const [nicknameError, setNicknameError] = useState(false);
 
     const validationsSchemaNick = yup.object().shape({
         nickname: yup.string().typeError('Must be a string').required('Required'),
@@ -95,6 +92,16 @@ const HeaderBar = (props) => {
     const [maxWidth, setMaxWidth] = React.useState('sm');
 
     const [openModal, setOpenModal] = React.useState(false);
+
+
+
+    const open = Boolean(anchorEl);
+    const handleClick = (event) => {
+        setAnchorEl(event.currentTarget);
+    };
+    const handleClose = () => {
+        setAnchorEl(null);
+    };
 
     const handleOpenDropdown = (event) => {
         setAnchorEl(event.currentTarget);
@@ -110,29 +117,14 @@ const HeaderBar = (props) => {
     };
     const handleCloseModal = () => {
         setOpenModal(false);
-        //setNicknameError(false);
     };
 
     const navigate = useNavigate();
 
     const changeNick = (values, resetForm) => {
         changeNickname(localStorage.getItem('userId'), values.nickname).then((response) => {
-            //props.changeNickname(response.data.nickname);
-            props.changeNickname(response.data.nickname);
             resetForm();
         })
-
-
-        //setNicknameError(false);
-        // ProfileService.changeNickname(localStorage.getItem('userId'), values).then((response) => {
-        //     //setNickname(response.data.nickname);
-        //     localStorage.setItem("userNickname", response.data.nickname);
-        //
-        // },error => {
-        //     if (error.response.status === 406) {
-        //         setNicknameError(true);
-        //     }
-        // });
     };
 
     function logOut() {
@@ -157,10 +149,10 @@ const HeaderBar = (props) => {
                 <div className={classes.menuButton}>
                     <IconButton
                         id="basic-button"
-                        aria-controls={openDropdown ? 'basic-menu' : undefined}
+                        aria-controls={open ? 'account-menu' : undefined}
                         aria-haspopup="true"
-                        aria-expanded={openDropdown ? 'true' : undefined}
-                        onClick={handleOpenDropdown}
+                        aria-expanded={open ? 'true' : undefined}
+                        onClick={handleClick}
                         sx={{
                             color: "royalBlue"
                         }}
@@ -169,16 +161,52 @@ const HeaderBar = (props) => {
                     </IconButton>
 
                     <Menu
-                        id="basic-menu"
                         anchorEl={anchorEl}
-                        open={openDropdown}
-                        onClose={handleCloseDropdown}
-                        MenuListProps={{
-                            'aria-labelledby': 'basic-button',
+                        id="account-menu"
+                        open={open}
+                        onClose={handleClose}
+                        onClick={handleClose}
+                        PaperProps={{
+                            elevation: 0,
+                            sx: {
+                                overflow: 'visible',
+                                filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
+                                mt: 1.5,
+                                '& .MuiAvatar-root': {
+                                    width: 32,
+                                    height: 32,
+                                    ml: -0.5,
+                                    mr: 1,
+                                },
+                                '&:before': {
+                                    content: '""',
+                                    display: 'block',
+                                    position: 'absolute',
+                                    top: 0,
+                                    right: 14,
+                                    width: 10,
+                                    height: 10,
+                                    bgcolor: 'background.paper',
+                                    transform: 'translateY(-50%) rotate(45deg)',
+                                    zIndex: 0,
+                                },
+                            },
                         }}
+                        transformOrigin={{ horizontal: 'right', vertical: 'top' }}
+                        anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
                     >
-                        <MenuItem onClick={handleClickOpenModal}>Edit my nickname</MenuItem>
-                        <MenuItem onClick={logOut}>Logout</MenuItem>
+                        <MenuItem onClick={handleClickOpenModal}>
+                            <ListItemIcon>
+                                <Settings fontSize="small" />
+                            </ListItemIcon>
+                            Profile settings
+                        </MenuItem>
+                        <MenuItem onClick={logOut}>
+                            <ListItemIcon>
+                                <Logout fontSize="small" />
+                            </ListItemIcon>
+                            Logout
+                        </MenuItem>
                     </Menu>
 
                     <BootstrapDialog
@@ -222,23 +250,23 @@ const HeaderBar = (props) => {
                                             onChange={handleChange}
                                         />
 
-                                        {nicknameError && <p className={classes.nicknameAlreadyExist}>This nickname already exist!</p>}
+                                        {error && <p className={classes.nicknameError}>{error}</p>}
+                                        {loading && <div className={classes.loadingSpinner}><CircularProgress /></div>}
 
-                                        <Button
+                                        <LoadingButton
                                             sx={{
-                                                fontSize: "1.3rem",
-                                                textTransform: "none"
+                                            fontSize: "1.3rem",
+                                            textTransform: "none"
                                             }}
+                                            size="small"
+                                            onClick={handleSubmit}
+                                            loading={loading}
+                                            loadingIndicator="Changing..."
                                             variant="outlined"
                                             disabled={!isValid || !dirty}
-                                            onClick={handleSubmit}
-                                            type={`submit`}
-                                        ><ManageAccountsIcon
-                                            sx={{
-                                                marginRight: "0.3rem"
-                                            }}
-                                        />Change nickname
-                                        </Button>
+                                        >
+                                            Change nickname
+                                        </LoadingButton>
                                     </div>
                                 )}
                             </Formik>

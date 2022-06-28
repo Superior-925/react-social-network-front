@@ -18,6 +18,7 @@ export const fetchAvatar = (userId) => {
                 headers: {"Authorization" : `${localStorage.getItem("token")}`}
             });
 
+            //delay for simulating a request to a remote server
             setTimeout(() => {
                 dispatch({type: FETCH_AVATAR_SUCCESS, payload: response.data})
             }, 1000)

@@ -2,31 +2,32 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5f493eff-d992-4cc6-beeb-01a32ebaa475" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/redux/actions/actionTypes.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/redux/actions/post.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/redux/reducers/comment-reducer.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/redux/reducers/post.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/redux/rootReducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/TodoList.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/UserList.tsx" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/avatar-block/avatar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/avatar-block/avatar.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/avatar-block/avatar.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/avatar-block/avatar.module.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/create-posts/create-posts.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/create-posts/create-posts.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/create-posts/create-posts.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/create-posts/create-posts.module.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/find-friends/find-friends.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/find-friends/find-friends.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/find-friends/find-friends.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/find-friends/find-friends.module.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/header-bar/header-bar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/header-bar/header-bar.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/header-bar/header-bar.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/header-bar/header-bar.module.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/posts-area/post-area.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/posts-area/post-area.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/home/home.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/home/home.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/posts-area/post-area.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/posts-area/post-area.module.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/main/main.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/main/main.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/auth-service.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/auth-service.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/avatar-service.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/services/friends-service.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/friends-service.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/main/main.module.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/main/main.module.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/actions/actionTypes.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/actions/post.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/reducers/comment-reducer.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/reducers/post.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/redux/rootReducer.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/post-service.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/post-service.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/profile-service.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/profile-service.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/action-creators/avatar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/action-creators/avatar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/action-creators/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/action-creators/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/action-creators/profile.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/action-creators/profile.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/reducers/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/reducers/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/reducers/profileReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/reducers/profileReducer.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,7 +64,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../react-social-network-back" />
     <property name="list.type.of.created.stylesheet" value="SCSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -92,7 +93,7 @@
     <configuration name="Debug Application" type="JavascriptDebugType" uri="http://localhost:3000">
       <method v="2" />
     </configuration>
-    <configuration name="npm start" type="js.build_tools.npm">
+    <configuration name="npm start" type="js.build_tools.npm" temporary="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
       <scripts>
@@ -102,6 +103,11 @@
       <envs />
       <method v="2" />
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.npm start" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
@@ -204,6 +210,20 @@
       <workItem from="1654533983885" duration="8000" />
       <workItem from="1654534013755" duration="9606000" />
       <workItem from="1654681489724" duration="186000" />
+      <workItem from="1654752601535" duration="11598000" />
+      <workItem from="1654767875631" duration="8192000" />
+      <workItem from="1654842522495" duration="7513000" />
+      <workItem from="1655064803205" duration="9500000" />
+      <workItem from="1655150987301" duration="9000" />
+      <workItem from="1655199459745" duration="4969000" />
+      <workItem from="1655285671481" duration="9973000" />
+      <workItem from="1655306173356" duration="1547000" />
+      <workItem from="1655372590349" duration="5427000" />
+      <workItem from="1655378728088" duration="493000" />
+      <workItem from="1655748598740" duration="5080000" />
+      <workItem from="1656063693865" duration="6516000" />
+      <workItem from="1656352116551" duration="3000" />
+      <workItem from="1656330247074" duration="2230000" />
     </task>
     <servers />
   </component>

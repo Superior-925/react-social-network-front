@@ -40,7 +40,13 @@
   width: 80%;
 }
 
-.nicknameAlreadyExist {
+.nicknameError {
   font-weight: bold;
   color: red;
+}
+
+.loadingSpinner {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
 }

@@ -7,21 +7,15 @@
 }
 
 .postArea {
-  border: lightgrey solid 1px;
   margin: 0 auto 1rem auto;
-  padding: 5px 5px;
-  border-radius: 5px;
-  width: 98%;
-  resize: none;
-  &:focus {
-    background-color: #dce1e6;
-  }
+  width: 100%;
 }
 
-.postInfo {
+.postInfoBlock {
   display: flex;
   align-items: center;
   font-weight: bold;
+  margin-bottom: 1rem;
 }
 
 .postAuthor {

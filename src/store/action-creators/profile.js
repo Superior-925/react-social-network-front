@@ -10,6 +10,11 @@ import {
     FETCH_NICKNAME_SUCCESS,
     FETCH_NICKNAME_ERROR
 } from "../action-types/profile";
+import {
+    CHANGE_POST_AUTHOR,
+    CHANGE_POST_AUTHOR_SUCCESS,
+    CHANGE_POST_AUTHOR_ERROR
+} from "../action-types/posts";
 
 export const fetchNickname = (userId) => {
     return async (dispatch) => {
@@ -45,24 +50,35 @@ export const changeNickname = (userId, nickname) => {
 
     return async (dispatch) => {
         try {
-            console.log(nickname);
-
-            dispatch({type: CHANGE_NICKNAME})
+            dispatch({type: CHANGE_NICKNAME});
+            dispatch({type: CHANGE_POST_AUTHOR});
 
             const data = {userId: userId, nickname: nickname};
-
             const response = await axios.post(`http://${configDev.hostPort}/nickname`, data, {
                 headers: {"Authorization" : `${localStorage.getItem("token")}`}
             });
             setTimeout(() => {
                 dispatch({type: CHANGE_NICKNAME_SUCCESS, payload: response.data})
+                dispatch({type: CHANGE_POST_AUTHOR_SUCCESS, payload: response.data})
             }, 1000)
             return response
-        } catch (e) {
+        } catch (error) {
+            if (error.response.status === 406) {
+                return setTimeout(() => {
+                    dispatch({
+                        type: CHANGE_NICKNAME_ERROR,
+                        payload: error.response.data.message
+                    })
+                }, 1000)
+            }
             dispatch({
                 type: CHANGE_NICKNAME_ERROR,
                 payload: 'An error occurred while changing the nickname'
-            })
+            });
+            dispatch({
+                type: CHANGE_POST_AUTHOR_ERROR,
+                payload: 'An error occurred while changing author of the posts'
+            });
         }
     }
 }

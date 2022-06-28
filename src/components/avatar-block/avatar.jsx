@@ -163,8 +163,6 @@ const MyAvatar = () => {
                                 onCrop={onCrop}
                                 onClose={onClose}
                                 onBeforeFileLoad={onBeforeFileLoad}
-                                // onImageLoad={onImageLoad}
-                                // onFileLoad={onFileLoad}
                                 src={null}
                             />
                             <div className={classes.avatarPreview}>
@@ -172,8 +170,8 @@ const MyAvatar = () => {
                                 {preview && <img src={preview} alt="Preview" />}
                             </div>
                         </div>
-                        {preview && <div className={classes.setAvatarButton}><Button variant="outlined"
-                                                                                     onClick={handleAvatarSubmit}
+                        {preview && <div className={classes.setAvatarButton}>
+                        <Button variant="outlined" onClick={handleAvatarSubmit}
                         >Set avatar</Button></div>}
                     </DialogContent>
                 </BootstrapDialog>
