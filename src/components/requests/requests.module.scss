@@ -1,0 +1,23 @@
+.mainBlock {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  width: 100%;
+}
+
+.friendName {
+  font-size: 1rem;
+  font-style: italic;
+}
+
+.buttonsBlock {
+  display: flex;
+}
+
+.nameBlock {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

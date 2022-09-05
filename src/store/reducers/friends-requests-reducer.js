@@ -11,7 +11,7 @@ import {
 } from "../action-types/requests";
 
 const initialState = {
-    requests: [],
+    requests: {},
 
     fetchRequestsStatus: false,
     fetchRequestsError: null,

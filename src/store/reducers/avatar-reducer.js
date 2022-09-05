@@ -4,7 +4,7 @@ import {
     FETCH_AVATAR_ERROR,
     CHANGE_AVATAR,
     CHANGE_AVATAR_SUCCESS,
-    CHANGE_AVATAR_ERROR
+    CHANGE_AVATAR_ERROR, FETCH_AVATAR_NO_IMAGE
 } from "../action-types/avatar";
 
 const initialState = {
@@ -18,6 +18,8 @@ export const avatarReducer = (state = initialState, action) => {
         case FETCH_AVATAR:
             return {...state, loading: true}
         case FETCH_AVATAR_SUCCESS:
+            return {...state, loading: false, avatar: action.payload}
+        case FETCH_AVATAR_NO_IMAGE:
             return {...state, loading: false, avatar: action.payload}
         case FETCH_AVATAR_ERROR:
             return {...state, loading: false, error: action.payload}

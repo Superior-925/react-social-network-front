@@ -69,6 +69,10 @@ const MyAvatar = () => {
     const [fullWidth, setFullWidth] = React.useState(true);
     const [maxWidth, setMaxWidth] = React.useState('sm');
 
+    const {pagePath} = useSelector(state => state.page);
+
+    const {pageOwner} = useSelector(state => state.owner);
+
     const [style, setStyle] = useState({
         margin: "0.3rem auto",
         width: "95%",
@@ -79,29 +83,97 @@ const MyAvatar = () => {
     });
 
     useEffect(() => {
-        if (avatar != null) {
-            setStyle( {
-                margin: "0.3rem auto",
-                width: "95%",
-                height: "300px",
-                borderRadius: "150px",
-                backgroundImage: `url(data:image/png;base64,${avatar})`,
-                backgroundSize: "cover"
-            });
-        }
-        if (avatar == null) {
+        console.log(pagePath);
+        // if (avatar !== null && localStorage.getItem('userId') == pagePath) {
+        //     setStyle( {
+        //         margin: "0.3rem auto",
+        //         width: "95%",
+        //         height: "300px",
+        //         borderRadius: "150px",
+        //         backgroundImage: `url(data:image/png;base64,${avatar})`,
+        //         backgroundSize: "cover"
+        //     });
+        // }
+        // if (avatar !== null && localStorage.getItem('userId') != pagePath) {
+        //     fetchAvatar(pagePath).then((response) => {
+        //         if (response.data !== "") {
+        //             setStyle( {
+        //                 margin: "0.3rem auto",
+        //                 width: "95%",
+        //                 height: "300px",
+        //                 borderRadius: "150px",
+        //                 backgroundImage: `url(data:image/png;base64,${response.data})`,
+        //                 backgroundSize: "cover"
+        //             });
+        //         }
+        //         if (response.data === "") {
+        //             setStyle( {
+        //                 margin: "0.3rem auto",
+        //                 width: "95%",
+        //                 height: "300px",
+        //                 borderRadius: "150px",
+        //                 backgroundImage: `url(${Background})`,
+        //                 backgroundSize: "cover"
+        //             });
+        //         }
+        //     })
+        // }
+        // if (avatar === null) {
+        if (pagePath === '') {
             fetchAvatar(localStorage.getItem('userId')).then((response) => {
-                setStyle( {
-                    margin: "0.3rem auto",
-                    width: "95%",
-                    height: "300px",
-                    borderRadius: "150px",
-                    backgroundImage: `url(data:image/png;base64,${response.data})`,
-                    backgroundSize: "cover"
-                });
+                console.log(response);
+                if (response.data !== "") {
+                    setStyle( {
+                        margin: "0.3rem auto",
+                        width: "95%",
+                        height: "300px",
+                        borderRadius: "150px",
+                        backgroundImage: `url(data:image/png;base64,${response.data})`,
+                        backgroundSize: "cover"
+                    });
+                }
+                if (response.data === "") {
+                    setStyle( {
+                        margin: "0.3rem auto",
+                        width: "95%",
+                        height: "300px",
+                        borderRadius: "150px",
+                        backgroundImage: `url(${Background})`,
+                        backgroundSize: "cover"
+                    });
+                }
             })
         }
-    }, []);
+        else {
+            fetchAvatar(pagePath).then((response) => {
+                console.log(response);
+                if (response.data !== "") {
+                    setStyle( {
+                        margin: "0.3rem auto",
+                        width: "95%",
+                        height: "300px",
+                        borderRadius: "150px",
+                        backgroundImage: `url(data:image/png;base64,${response.data})`,
+                        backgroundSize: "cover"
+                    });
+                }
+                if (response.data === "") {
+                    setStyle( {
+                        margin: "0.3rem auto",
+                        width: "95%",
+                        height: "300px",
+                        borderRadius: "150px",
+                        backgroundImage: `url(${Background})`,
+                        backgroundSize: "cover"
+                    });
+                }
+            })
+        }
+
+
+
+        // }
+    }, [pagePath]);
 
     function onClose() {
         setPreview(null);
@@ -143,7 +215,7 @@ const MyAvatar = () => {
             {error && <div className={classes.errorBlock}>{error}</div>}
             {loading && <div className={classes.loadingSpinner}><CircularProgress /></div>}
             {!loading && <div style={style}>
-                <button className={classes.editAvatarBtn} onClick={handleClickOpen}><AddIcon /></button>
+                {pageOwner &&  <button className={classes.editAvatarBtn} onClick={handleClickOpen}><AddIcon /></button>}
                 <BootstrapDialog
                     fullWidth={fullWidth}
                     maxWidth={maxWidth}

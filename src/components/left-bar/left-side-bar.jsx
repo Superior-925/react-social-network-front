@@ -4,16 +4,26 @@ import {useNavigate} from "react-router-dom";
 import GroupIcon from '@mui/icons-material/Group';
 import PersonIcon from '@mui/icons-material/Person';
 import Avatar from "../avatar-block/avatar";
+import {useActions} from "../../hooks/useActions";
+import {setPagePath} from "../../store/action-creators/page-path";
 
 const LeftSideBar = (props) => {
 
+    const {setOwnerTrue} = useActions();
+
     const navigate = useNavigate();
 
+    const {setPagePath} = useActions();
+
     function goToMyPage() {
-        navigate(`/main/user/id/${localStorage.getItem("userId")}`);
+            setPagePath(localStorage.getItem("userId"));
+            setOwnerTrue();
+            navigate(`/main/user/id/${localStorage.getItem("userId")}`);
     }
 
     function goToFriendsPage() {
+        setPagePath(localStorage.getItem("userId"));
+        setOwnerTrue();
         navigate(`/friends/user/id/${localStorage.getItem("userId")}`);
     }
 

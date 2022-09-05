@@ -12,30 +12,50 @@ import {
     DELETE_REQUEST_SUCCESS,
     DELETE_REQUEST_ERROR
 } from "../action-types/requests";
-import {FETCH_POSTS, FETCH_POSTS_ERROR, FETCH_POSTS_SUCCESS} from "../action-types/posts";
 
 export const fetchFriendsRequests = (userId) => {
     return async (dispatch) => {
         try {
             dispatch({type: FETCH_REQUESTS})
             const response = await axios.get(`http://${configDev.hostPort}/request/`+userId, {
-                headers: {"Authorization" : `${localStorage.getItem("token")}`}
+                headers: {"Authorization": `${localStorage.getItem("token")}`}
             });
-            const requestsArr = [];
-            response.data.forEach((item) => {
-                let date = new Date(item.updatedAt);
-                let newDate = date.toLocaleString();
-                requestsArr.push({postText: item.postText, postAuthor: item.userId.nickname, postId: item._id, updatedAt: newDate});
-            });
+            // const requestsArr = [];
+            // response.data.candidates.forEach((item) => {
+            //     const friendRequest = {userId: item.userId, candidateId: item.candidateId};
+            //     requestsArr.push(friendRequest)
+            // });
 
+            //array of my requests.jsx to friends
+            const friendsRequestsArr = [];
+            //array of requests.jsx to me
+            const candidatesRequestsArr = [];
+            response.data.candidates.forEach((candidate) => {
+                const friendRequest = {
+                    id: candidate._id,
+                    userId: candidate.userId,
+                    candidateId: candidate.candidateId
+                };
+                friendsRequestsArr.push(friendRequest);
+            });
+            response.data.requests.forEach((request) => {
+                const candidateRequest = {
+                    id: request._id,
+                    candidate: request.candidateId,
+                    userId: request.userId
+                };
+                candidatesRequestsArr.push(candidateRequest);
+            })
+            const requests = {friendsRequestsArr, candidatesRequestsArr}
             //delay for simulating a request to a remote server
             setTimeout(() => {
-                dispatch({type: FETCH_POSTS_SUCCESS, payload: postsArr})
+                dispatch({type: FETCH_REQUESTS_SUCCESS, payload: requests})
             }, 1000)
+            return response
         } catch (e) {
             dispatch({
-                type: FETCH_POSTS_ERROR,
-                payload: 'An error occurred while loading posts'
+                type: FETCH_REQUESTS_ERROR,
+                payload: 'An error occurred while loading requests.jsx'
             })
         }
     }

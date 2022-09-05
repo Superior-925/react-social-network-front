@@ -5,6 +5,7 @@ import Container from '@mui/material/Container';
 import HeaderBar from "../../components/header-bar/header-bar"
 import LeftSideBar from "../../components/left-bar/left-side-bar";
 import FindFriends from "../../components/find-friends/find-friends";
+import FriendsNavigationBlock from "../../components/friends-navigation-block/friends-navigation-block";
 
 function Friends() {
 
@@ -33,10 +34,9 @@ function Friends() {
                 <div className={classes.contentWrapper}>
                     <LeftSideBar/>
                     <div className={classes.mainContent}>
-                        <FindFriends/>
+                        <FriendsNavigationBlock/>
                     </div>
                 </div>
-
             </Container>
         </div>
     );

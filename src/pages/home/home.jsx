@@ -3,7 +3,7 @@ import classes from './home.module.scss'
 import FacebookLogo from "../../assets/facebook-logo.png";
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
-import AuthService from "../../services/auth-service";
+import AuthService from "../../api/auth-service";
 import {useActions} from "../../hooks/useActions";
 
 import PropTypes from 'prop-types';
@@ -17,6 +17,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import {useNavigate} from "react-router-dom";
 import { Formik } from 'formik';
 import * as yup from 'yup';
+import {useSelector} from "react-redux";
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
     '& .MuiDialogContent-root': {
@@ -60,6 +61,8 @@ function Home() {
 
     const [open, setOpen] = React.useState(false);
 
+    const {setPagePath} = useActions();
+
     const validationsSchemaLogin = yup.object().shape({
         password: yup.string().typeError('Must be a string').required('Required').min(6, 'Password must be longer than or equal to six characters'),
         email: yup.string().email('Please enter a valid email').required('Required'),
@@ -93,9 +96,11 @@ function Home() {
         setEmailOrPasswordIncorrect(false);
         AuthService.logIn(data).then((response) => {
             if (response.status === 200 ) {
+
                 setNickname(response.data.userNickname);
                 AuthService.setLocalStorageData(response.data.userId, response.data.token, response.data.refresh.token);
                 AuthService.startRefresh();
+                setPagePath(response.data.userId);
                 navigate(`/main/user/id/${response.data.userId}`);
             }
         },error => {
@@ -111,6 +116,11 @@ function Home() {
         AuthService.signUp(data).then((response) => {
             console.log(response);
             if (response.status === 200 ) {
+                const { pathname } = window.location;
+                const paths = pathname.split("/").filter(entry => entry !== "");
+                const userIdFromPath = paths[paths.length - 1];
+                setPagePath(userIdFromPath);
+
                 setNickname(response.data.userNickname);
                 AuthService.setLocalStorageData(response.data.userId, response.data.token, response.data.refresh.token);
                 AuthService.startRefresh();

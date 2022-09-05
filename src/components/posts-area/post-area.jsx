@@ -17,6 +17,8 @@ const PostArea = (props) => {
 
     const {changePostStatus} = useSelector(state => state.posts);
 
+    const {pageOwner} = useSelector(state => state.owner);
+
     const [changeStatus, setChangeStatus] = useState(false);
 
     const [deletePostStatus, setDeletePostStatus] = useState(false);
@@ -111,7 +113,7 @@ const PostArea = (props) => {
                 <div className={classes.postDate}>{props.updatedAt}</div>
             </div>
             <div className={classes.buttonsBlock}>
-                <Button
+                {pageOwner && <Button
                     sx={{
                         width: "22%",
                         display: "flex",
@@ -129,7 +131,7 @@ const PostArea = (props) => {
                         marginRight: "0.3rem"
                     }}
                 />Edit post
-                </Button>
+                </Button>}
                 {changePostButtonStatus && <div>
                     <LoadingButton
                         sx={{
@@ -172,7 +174,7 @@ const PostArea = (props) => {
                     />
                     Comments
                 </Button>
-                <LoadingButton
+                {pageOwner && <LoadingButton
                     sx={{
                         width: "22%",
                         display: "flex",
@@ -190,7 +192,7 @@ const PostArea = (props) => {
                     variant="contained"
                     size="small"
                 > Delete post
-                </LoadingButton>
+                </LoadingButton>}
             </div>
             {showComments &&
                 <div className={classes.commentsBlock}>

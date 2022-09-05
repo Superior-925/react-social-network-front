@@ -1,0 +1,2 @@
+export const SET_OWNER_TRUE = 'SET_OWNER_TRUE';
+export const SET_OWNER_FALSE = 'SET_OWNER_FALSE';

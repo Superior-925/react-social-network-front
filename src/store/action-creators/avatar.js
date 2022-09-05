@@ -4,6 +4,7 @@ import {
         FETCH_AVATAR,
         FETCH_AVATAR_SUCCESS,
         FETCH_AVATAR_ERROR,
+        FETCH_AVATAR_NO_IMAGE,
         CHANGE_AVATAR,
         CHANGE_AVATAR_SUCCESS,
         CHANGE_AVATAR_ERROR
@@ -17,11 +18,19 @@ export const fetchAvatar = (userId) => {
             const response = await axios.get(`http://${configDev.hostPort}/avatar/`+userId, {
                 headers: {"Authorization" : `${localStorage.getItem("token")}`}
             });
-
-            //delay for simulating a request to a remote server
-            setTimeout(() => {
-                dispatch({type: FETCH_AVATAR_SUCCESS, payload: response.data})
-            }, 1000)
+            console.log(response.status);
+            if (response.status == 200) {
+                //delay for simulating a request to a remote server
+                setTimeout(() => {
+                    dispatch({type: FETCH_AVATAR_SUCCESS, payload: response.data})
+                }, 1000)
+            }
+            if (response.status == 204) {
+                //delay for simulating a request to a remote server
+                setTimeout(() => {
+                    dispatch({type: FETCH_AVATAR_NO_IMAGE, payload: null})
+                }, 1000)
+            }
             return response
         } catch (e) {
             dispatch({

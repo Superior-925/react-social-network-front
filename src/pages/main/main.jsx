@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useSelector} from "react-redux";
 import {useActions} from "../../hooks/useActions";
 import classes from './main.module.scss'
@@ -11,19 +11,41 @@ import CircularProgress from "@mui/material/CircularProgress";
 
 export default function Main() {
 
-    const { pathname } = window.location;
-    const paths = pathname.split("/").filter(entry => entry !== "");
-    const userIdFromPath = paths[paths.length - 1];
+    // const { pathname } = window.location;
+    // const paths = pathname.split("/").filter(entry => entry !== "");
+    // const userIdFromPath = paths[paths.length - 1];
 
-    let {fetchPosts} = useActions();
+    const {fetchPosts, setOwnerTrue, setOwnerFalse, setPagePath} = useActions();
 
-    let {posts, fetchPostsStatus, fetchPostsError, createPostStatus, createPostError, changePostAuthorStatus} = useSelector(state => state.posts);
+    const {posts, fetchPostsStatus, fetchPostsError, createPostStatus, createPostError, changePostAuthorStatus} = useSelector(state => state.posts);
+
+    const {pageOwner} = useSelector(state => state.owner);
+
+    const {pagePath} = useSelector(state => state.page);
+
+    // if (pagePath === '') {
+    //     setPagePath(localStorage.getItem('userId'));
+    // }
 
     useEffect(() => {
-        if (!posts.length) {
-            fetchPosts(userIdFromPath);
+
+        if (pagePath === '') {
+            fetchPosts(localStorage.getItem('userId'));
+            setPagePath(localStorage.getItem('userId'));
         }
-    }, [])
+        else {
+            fetchPosts(pagePath);
+        }
+
+        if (pagePath !== localStorage.getItem('userId')) {
+            setOwnerFalse()
+        }
+        if (pagePath === localStorage.getItem('userId')) {
+            setOwnerTrue()
+        }
+
+
+    }, [pagePath])
 
         return (
             <div>
@@ -34,12 +56,13 @@ export default function Main() {
                     <div className={classes.contentWrapper}>
                         <LeftSideBar/>
                         <div className={classes.mainContent}>
-                            <CreatePosts/>
-                            {fetchPostsStatus && <div className={classes.loadingSpinner}><CircularProgress /></div>}
-                            {changePostAuthorStatus && <div className={classes.loadingSpinner}><CircularProgress /></div>}
-                            {fetchPostsError && <div className={classes.errorBlock}>{fetchPostsError}</div>}
-                            {createPostError && <div className={classes.errorBlock}>{createPostError}</div>}
-                            {!fetchPostsStatus && !changePostAuthorStatus && posts.map((item, index)=> {
+                            {pageOwner && <CreatePosts/>}
+                            <div className={classes.postsBlock}>
+                                {fetchPostsStatus && <div className={classes.loadingSpinner}><CircularProgress /></div>}
+                                {changePostAuthorStatus && <div className={classes.loadingSpinner}><CircularProgress /></div>}
+                                {fetchPostsError && <div className={classes.errorBlock}>{fetchPostsError}</div>}
+                                {createPostError && <div className={classes.errorBlock}>{createPostError}</div>}
+                                {!fetchPostsStatus && !changePostAuthorStatus && posts.map((item, index)=> {
                                     return (
                                         <PostArea
                                             key={item.postId}
@@ -50,7 +73,9 @@ export default function Main() {
                                         />
                                     )
                                 })
-                            }
+                                }
+                            </div>
+
                         </div>
                     </div>
 

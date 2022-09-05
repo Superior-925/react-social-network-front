@@ -4,7 +4,7 @@ import {useSelector} from "react-redux";
 import {useActions} from "../../hooks/useActions";
 import classes from './header-bar.module.scss';
 import FacebookLogo from "../../assets/facebook-logo.png";
-import AuthService from "../../services/auth-service";
+import AuthService from "../../api/auth-service";
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
@@ -70,11 +70,16 @@ BootstrapDialogTitle.propTypes = {
 
 const HeaderBar = (props) => {
 
+    const {pageOwner} = useSelector(state => state.owner);
+
+    const {pagePath} = useSelector(state => state.page);
+
     useEffect(() => {
-        if (nickname == null) {
+        if (pagePath === '') {
             fetchNickname(localStorage.getItem('userId'));
         }
-    }, []);
+        else {fetchNickname(pagePath);}
+    }, [pagePath]);
 
     const {nickname, loading, error} = useSelector(state => state.profile)
 
@@ -195,12 +200,12 @@ const HeaderBar = (props) => {
                         transformOrigin={{ horizontal: 'right', vertical: 'top' }}
                         anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
                     >
-                        <MenuItem onClick={handleClickOpenModal}>
+                        {pageOwner && <MenuItem onClick={handleClickOpenModal}>
                             <ListItemIcon>
                                 <Settings fontSize="small" />
                             </ListItemIcon>
                             Profile settings
-                        </MenuItem>
+                        </MenuItem>}
                         <MenuItem onClick={logOut}>
                             <ListItemIcon>
                                 <Logout fontSize="small" />
